@@ -23,9 +23,10 @@ const CONNECTION_STRING = process.env.CONNECTION_STRING;
 app.use(cors());
 app.use(express.json());
 app.options("*", cors());
-app.use(morgan("tiny"));
+app.use(morgan("combined"));
 app.use(authJwt());
 app.use(errorHandler);
+app.use('/public/uploads',express.static(__dirname+'/public/uploads'));
 
 const api = process.env.API_URL;
 app.use(`${api}/categories`, categoriesRoutes);

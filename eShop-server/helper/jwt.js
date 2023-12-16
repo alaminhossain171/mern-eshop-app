@@ -21,6 +21,11 @@ const authJwt = () => {
   }).unless({
     path: [
       {
+        url: /\/public\/uploads(.*)/,
+        // url:"/api/v1/products",
+        methods: ["GET", "OPTIONS"],
+      },
+      {
         url: /\/api\/v1\/products(.*)/,
         // url:"/api/v1/products",
         methods: ["GET", "OPTIONS"],
