@@ -29,10 +29,10 @@ const Banner = () => {
             autoplay={true}
             autoplayTimeout={2}
           >
-            {bannerData.map((item) => {
+            {bannerData.map((item,index) => {
               return (
                 <Image
-                  key={item}
+                  key={index}
                   style={styles.imageBanner}
                   resizeMode="contain"
                   source={{ uri: item }}
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   imageBanner: {
-    height: width / 2,
+    height: width / 2.2,
     width: width - 40,
     borderRadius: 10,
     marginHorizontal: 20,

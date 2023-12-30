@@ -5,14 +5,18 @@ import { ProductsContainer } from "./src/screens";
 import Header from "./src/components/Header/Header";
 import { SafeAreaProvider, Box } from "react-native-safe-area-context";
 import { NativeBaseProvider } from "native-base";
-LogBox.ignoreAllLogs(true);
+import RootNavigation from "./src/Navigation/RootNavigation";
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
 const App = () => {
   return (
-    <NativeBaseProvider>
+   <View style={styles.container}>
+     <NativeBaseProvider>
       <Header />
-      <ProductsContainer />
+      <RootNavigation />
     </NativeBaseProvider>
+   </View>
   );
 };
 
