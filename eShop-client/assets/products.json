@@ -13,7 +13,7 @@
     "category": {
       "$oid": "5f15d5cdcb4a6642bddc0fe9"
     },
-    "countInStock": 0,
+    "countInStock": 10,
     "__v": 0
   },{
     "_id": {

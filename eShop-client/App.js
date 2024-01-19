@@ -6,17 +6,26 @@ import Header from "./src/components/Header/Header";
 import { SafeAreaProvider, Box } from "react-native-safe-area-context";
 import { NativeBaseProvider } from "native-base";
 import RootNavigation from "./src/Navigation/RootNavigation";
-LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
-LogBox.ignoreAllLogs();//Ignore all log notifications
+import { store } from "./src/redux/store";
+import {Provider} from "react-redux";
+import Toast from 'react-native-toast-message'
+import Auth from "./src/context/store/Auth";
+LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 const App = () => {
   return (
-   <View style={styles.container}>
-     <NativeBaseProvider>
-      <Header />
-      <RootNavigation />
-    </NativeBaseProvider>
-   </View>
+    <Auth>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <NativeBaseProvider>
+          <Header />
+          <RootNavigation />
+          <Toast ref={(ref)=>Toast.setRef(ref)}/>
+        </NativeBaseProvider>
+      </View>
+    </Provider>
+    </Auth>
   );
 };
 

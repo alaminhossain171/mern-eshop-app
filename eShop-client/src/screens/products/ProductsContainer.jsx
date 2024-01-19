@@ -5,9 +5,11 @@ import { Ionicons } from "@expo/vector-icons";
 import ProductList from "./ProductList";
 import SearchedProduct from "./SearchedProducts";
 import Banner from "../../components/Banner/Banner";
-import data from "../../../assets/products.json";
 import productCategories from "../../../assets/categories.json";
 import CategoryFilter from "./CategoryFilter";
+import { apiGet } from "../../utils/utils";
+import { productsAPI } from "../../config/restAPI";
+
 
 const { height, width } = Dimensions.get("window");
 
@@ -21,13 +23,26 @@ const ProductsContainer = ({navigation}) => {
   const [initialState, setInitialState] = useState([]);
 
   useEffect(() => {
-    setProducts(data);
-    setProductFilter(data);
+    getProducts()
+  
     setCateories(productCategories);
     setActive(-1);
-    setInitialState(data);
-    setProductsCtg(data);
+    ;
+
   }, []);
+
+
+  const getProducts=async()=>{
+    try {
+      const data= await apiGet(productsAPI);
+      setProducts(data);
+      setProductFilter(data);
+      setInitialState(data);
+      setProductsCtg(data)
+    } catch (error) {
+      console.log('error product api',error)
+    }
+  }
 
   const searchProduct = (text) => {
     setProductFilter(
@@ -135,6 +150,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     backgroundColor: "gainsboro",
     flexGrow: 1,
+
   },
 });
 

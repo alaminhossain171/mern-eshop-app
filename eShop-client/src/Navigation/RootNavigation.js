@@ -5,7 +5,6 @@ import TabNavigation from './TabNavigation';
 export default function RootNavigation() {
   return (
     <NavigationContainer>
-
       <TabNavigation />  
     </NavigationContainer>
   );

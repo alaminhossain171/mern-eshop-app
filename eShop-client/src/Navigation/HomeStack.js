@@ -8,7 +8,7 @@ const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name="Home"
+        name="HomeStack"
         options={{ headerShown: false }}
         component={ProductsContainer}
       />
@@ -25,4 +25,4 @@ const HomeStackScreen = () => {
 
 export default HomeStackScreen;
 
-const styles = StyleSheet.create({});
+
